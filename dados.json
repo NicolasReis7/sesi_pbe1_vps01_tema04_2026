@@ -1,0 +1,26 @@
+[
+    {
+        "id": 2,
+        "local": "sala 02",
+        "equipamento": "Computador Dell",
+        "consumo_kwh": 120.7,
+        "mes_referencia": "2026-09",
+        "status": "Consumo normal"
+    },
+    {
+        "id": 4,
+        "local": "Biblioteca",
+        "equipamento": "Ar-condicionado",
+        "consumo_kwh": 210.8,
+        "mes_referencia": "2026-09",
+        "status": "Consumo elevado"
+    },
+    {
+        "id": 6,
+        "local": "Laboratório 02",
+        "equipamento": "Ventilador",
+        "consumo_kwh": 95.6,
+        "mes_referencia": "2026-09",
+        "status": "Consumo normal"
+    }
+]

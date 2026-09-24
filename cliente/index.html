@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+</head>
+<body>
+
+    <center><h1>Cadastro de Equipamento</h1>
+
+    <form id="formulario">
+
+        <label>Local:</label>
+        <input type="text" id="local" required>
+
+        <br><br>
+
+        <label>Equipamento:</label>
+        <input type="text" id="equipamento" required>
+
+        <br><br>
+
+        <label>Consumo kWh:</label>
+        <input type="number" id="consumo_kwh" step="0.1" required>
+
+        <br><br>
+
+        <label>Mês de referência:</label>
+        <input type="month" id="mes_referencia" required>
+
+        <br><br>
+
+        <label>Status:</label>
+        <select id="status" required>
+            <option value="Consumo normal">Consumo normal</option>
+            <option value="Consumo elevado">Consumo elevado</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Cadastrar</button></center>
+
+    </form>
+
+    <p id="mensagem"></p>
+
+    <script>
+
+        const formulario = document.getElementById("formulario");
+
+        formulario.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const dados = {
+                local: document.getElementById("local").value,
+                equipamento: document.getElementById("equipamento").value,
+                consumo_kwh: Number(document.getElementById("consumo_kwh").value),
+                mes_referencia: document.getElementById("mes_referencia").value,
+                status: document.getElementById("status").value
+            };
+
+            const resposta = await fetch("http://localhost:3000/equipamentos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dados)
+            });
+
+            const resultado = await resposta.json();
+
+            const mensagem = document.getElementById("mensagem");
+
+            mensagem.textContent = "Equipamento cadastrado com sucesso! ID: " + resultado.id;
+
+            formulario.reset();
+
+        });
+
+    </script>
+
+</body>
+</html> 
